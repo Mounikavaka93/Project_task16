@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Mail, MapPin, Phone } from 'lucide-react'
+import { studios } from '../data/content'
 import Button from './ui/Button'
 import Container from './ui/Container'
 import SectionHeading from './ui/SectionHeading'
@@ -22,7 +23,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="bg-sand-50 pb-20 pt-8 sm:pb-24 sm:pt-10">
+    <section id="contact" className="bg-sand-50 pb-20 pt-6 sm:pb-24 sm:pt-8">
       <Container className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
         <div className="min-w-0">
           <SectionHeading
@@ -32,7 +33,24 @@ export default function Contact() {
             description="Tell us about your sites, suppliers, or restoration goals. A specialist replies within one business day."
           />
 
-          <ul className="mt-10 space-y-5">
+          <div className="mt-10 grid grid-cols-3 gap-3">
+            {studios.map((studio) => (
+              <figure key={studio.city} className="min-w-0 overflow-hidden rounded-2xl">
+                <img
+                  src={studio.image}
+                  alt={`${studio.city} studio`}
+                  className="h-24 w-full object-cover sm:h-28"
+                  loading="lazy"
+                />
+                <figcaption className="bg-white px-2 py-2 ring-1 ring-inset ring-forest-900/8">
+                  <p className="text-xs font-semibold text-forest-950">{studio.city}</p>
+                  <p className="text-[10px] text-forest-800/60">{studio.detail}</p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <ul className="mt-8 space-y-4">
             <li className="flex items-start gap-3">
               <span className="mt-0.5 flex h-10 w-10 items-center justify-center rounded-xl bg-white text-forest-800 ring-1 ring-forest-900/8">
                 <Mail className="h-4 w-4" />

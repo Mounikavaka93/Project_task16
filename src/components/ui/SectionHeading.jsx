@@ -10,7 +10,7 @@ export default function SectionHeading({
   const alignment = align === 'left' ? 'items-start text-left' : 'items-center text-center mx-auto'
 
   return (
-    <div data-section-start className={`flex w-full max-w-2xl flex-col gap-3 sm:gap-4 ${alignment}`}>
+    <div data-section-start className={`flex w-full max-w-2xl flex-col gap-2 sm:gap-3 ${alignment}`}>
       {eyebrow ? (
         <span
           className={`inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em] ${

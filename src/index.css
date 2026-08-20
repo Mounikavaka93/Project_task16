@@ -28,6 +28,13 @@
 
 :root {
   --page-gutter: clamp(1.25rem, 4.5vw, 4rem);
+  --nav-height: 3.5rem;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --nav-height: 4rem;
+  }
 }
 
 *,
@@ -37,9 +44,17 @@
 }
 
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+section[id] {
+  scroll-margin-top: var(--nav-height);
+}
+
+section#home {
+  scroll-margin-top: 0;
 }
 
 html::-webkit-scrollbar,

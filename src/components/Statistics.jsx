@@ -64,9 +64,9 @@ export default function Statistics() {
   }, [])
 
   return (
-    <section id="impact" className="relative overflow-hidden bg-forest-900 pb-20 pt-8 sm:pb-24 sm:pt-10">
+    <section id="impact" className="relative overflow-hidden bg-forest-900 pb-20 pt-6 sm:pb-24 sm:pt-8">
       <img
-        src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1800&q=80"
+        src="/images/mountains.jpg"
         alt=""
         className="absolute inset-0 h-full w-full object-cover opacity-25"
       />

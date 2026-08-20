@@ -16,13 +16,6 @@ export default function Navbar({ onSignIn, onCreateAccount }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    document.body.style.overflow = open ? 'hidden' : ''
-    return () => {
-      document.body.style.overflow = ''
-    }
-  }, [open])
-
   const openSignIn = () => {
     setOpen(false)
     onSignIn?.()
@@ -35,13 +28,13 @@ export default function Navbar({ onSignIn, onCreateAccount }) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled || open
           ? 'border-b border-forest-900/8 bg-sand-50/90 shadow-sm backdrop-blur-xl'
           : 'bg-transparent'
       }`}
     >
-      <Container className="grid h-16 grid-cols-[1fr_auto] items-center gap-4 sm:h-[4.25rem] lg:grid-cols-[1fr_auto_1fr]">
+      <Container className="grid h-14 grid-cols-[1fr_auto] items-center gap-4 sm:h-16 lg:grid-cols-[1fr_auto_1fr]">
         <Logo className="justify-self-start" />
 
         <nav className="hidden items-center justify-center gap-5 xl:gap-8 lg:flex" aria-label="Primary">
@@ -56,7 +49,7 @@ export default function Navbar({ onSignIn, onCreateAccount }) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3 justify-self-end">
+        <div className="flex items-center justify-end gap-3">
           <div className="hidden items-center gap-3 lg:flex">
             <button
               type="button"
@@ -79,36 +72,34 @@ export default function Navbar({ onSignIn, onCreateAccount }) {
         </div>
       </Container>
 
-      <div
-        className={`overflow-hidden border-t border-forest-900/8 bg-sand-50 transition-all duration-300 lg:hidden ${
-          open ? 'max-h-[32rem] opacity-100' : 'max-h-0 opacity-0'
-        }`}
-      >
-        <Container>
-          <nav className="flex flex-col gap-1 py-4" aria-label="Mobile">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-xl px-3 py-2.5 text-base font-medium text-forest-900/80 transition hover:bg-forest-50 hover:text-forest-900"
+      {open ? (
+        <div className="absolute inset-x-0 top-full border-b border-forest-900/8 bg-sand-50 shadow-lg lg:hidden">
+          <Container>
+            <nav className="flex flex-col gap-1 py-4" aria-label="Mobile">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-xl px-3 py-2.5 text-base font-medium text-forest-900/80 transition hover:bg-forest-50 hover:text-forest-900"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <button
+                type="button"
+                onClick={openSignIn}
+                className="rounded-xl px-3 py-2.5 text-left text-base font-medium text-forest-900/80 transition hover:bg-forest-50 hover:text-forest-900"
               >
-                {link.label}
-              </a>
-            ))}
-            <button
-              type="button"
-              onClick={openSignIn}
-              className="rounded-xl px-3 py-2.5 text-left text-base font-medium text-forest-900/80 transition hover:bg-forest-50 hover:text-forest-900"
-            >
-              Sign in
-            </button>
-            <Button className="mt-3 w-full" onClick={openCreateAccount}>
-              Create account
-            </Button>
-          </nav>
-        </Container>
-      </div>
+                Sign in
+              </button>
+              <Button className="mt-3 w-full" onClick={openCreateAccount}>
+                Create account
+              </Button>
+            </nav>
+          </Container>
+        </div>
+      ) : null}
     </header>
   )
 }

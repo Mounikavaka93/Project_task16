@@ -1,24 +1,32 @@
 import { Check } from 'lucide-react'
-import { benefits } from '../data/content'
+import { aboutPhotos, benefits } from '../data/content'
 import Container from './ui/Container'
 import SectionHeading from './ui/SectionHeading'
 
 export default function About() {
   return (
-    <section id="about" className="bg-sand-50 pb-20 pt-8 sm:pb-24 sm:pt-10">
-      <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+    <section id="about" className="bg-sand-50 pb-20 pt-6 sm:pb-24 sm:pt-8">
+      <Container className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div className="relative min-w-0">
           <div className="overflow-hidden rounded-[1.75rem] shadow-xl shadow-forest-950/10">
             <img
-              src="https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1400&q=80"
-              alt="Lush forest path with filtered sunlight"
-              className="h-[22rem] w-full object-cover transition duration-700 hover:scale-105 sm:h-[28rem]"
+              src={aboutPhotos.path}
+              alt="Sunlit path through a temperate rainforest"
+              className="h-[22rem] w-full object-cover sm:h-[28rem]"
             />
           </div>
-          <div className="absolute bottom-4 right-4 max-w-[15.5rem] rounded-2xl bg-forest-900 p-5 text-sand-50 shadow-xl sm:bottom-6 sm:right-6">
+          <div className="absolute bottom-4 left-4 w-32 overflow-hidden rounded-2xl shadow-lg ring-4 ring-sand-50 sm:bottom-5 sm:left-5 sm:w-40">
+            <img
+              src={aboutPhotos.field}
+              alt="Hands working soil in a restoration plot"
+              className="h-24 w-full object-cover sm:h-28"
+              loading="lazy"
+            />
+          </div>
+          <div className="absolute bottom-4 right-4 max-w-[13rem] rounded-2xl bg-forest-900 p-4 text-sand-50 shadow-xl sm:bottom-5 sm:right-5">
             <p className="font-display text-3xl font-semibold">12 yrs</p>
             <p className="mt-1 text-sm leading-relaxed text-forest-100/80">
-              of ecological science packed into a product your operators will actually use.
+              of field ecology, packed into software operators will actually open.
             </p>
           </div>
         </div>

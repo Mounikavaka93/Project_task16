@@ -5,7 +5,7 @@ import SectionHeading from './ui/SectionHeading'
 
 export default function Testimonials() {
   return (
-    <section id="stories" className="bg-sand-50 pb-20 pt-8 sm:pb-24 sm:pt-10">
+    <section id="stories" className="bg-sand-50 pb-20 pt-6 sm:pb-24 sm:pt-8">
       <Container>
         <SectionHeading
           eyebrow="Stories"
@@ -13,7 +13,7 @@ export default function Testimonials() {
           description="From logistics networks to conservation NGOs, Verdant is the shared language between finance, field, and the board."
         />
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {testimonials.map((item) => (
             <figure
               key={item.name}
@@ -24,11 +24,12 @@ export default function Testimonials() {
                 “{item.quote}”
               </blockquote>
               <figcaption className="mt-6 flex items-center gap-3">
-                <span
-                  className={`flex h-11 w-11 items-center justify-center rounded-full text-sm font-semibold text-white ${item.tone}`}
-                >
-                  {item.initials}
-                </span>
+                <img
+                  src={item.photo}
+                  alt={item.name}
+                  className="h-12 w-12 rounded-full object-cover ring-2 ring-sand-100"
+                  loading="lazy"
+                />
                 <div>
                   <p className="text-sm font-semibold text-forest-950">{item.name}</p>
                   <p className="text-xs text-forest-800/65">
